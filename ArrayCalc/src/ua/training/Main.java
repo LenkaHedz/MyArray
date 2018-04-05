@@ -19,8 +19,21 @@ public class Main {
         list.clear();
         list.removeRange(1, 6);
         list.removeAll(list);
+        
+        Map<Integer, Integer> ress = new TreeMap<>();
+        for (Integer i: list) {
+                if(!ress.containsKey(i)){
+                        ress.put(i, 1);
+                } else {
+                        ress.replace(i, ress.get(i).intValue()+1);
+                }
+        }
 
-        System.out.println(list.stream().sorted((p1, p2) -> p1.compareTo(p2)).count());
+        for (Map.Entry entry: ress.entrySet()) {
+                System.out.print(entry.getKey());
+                System.out.print(" - ");
+                System.out.println(entry.getValue());
+        }
 
 
     }
